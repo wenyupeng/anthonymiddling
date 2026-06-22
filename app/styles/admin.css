@@ -1,0 +1,166 @@
+.signal-panel,
+.admin-preview,
+.preview-stack,
+.preview-row {
+  display: none;
+}
+
+.admin-shell {
+  background: transparent;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: var(--brand-deep);
+  color: var(--cream);
+  padding: 24px;
+}
+
+.admin-sidebar nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 42px;
+}
+
+.admin-nav-item {
+  align-items: center;
+  border-radius: 8px;
+  color: rgba(255, 248, 232, 0.72);
+  display: flex;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.admin-nav-item.active,
+.admin-nav-item:hover {
+  background: rgba(255, 248, 232, 0.1);
+  color: var(--cream);
+}
+
+.admin-main {
+  padding: 34px clamp(18px, 4vw, 52px) 52px;
+}
+
+.admin-topbar {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.admin-topbar h1 {
+  font-size: clamp(42px, 5vw, 82px);
+  margin-bottom: 0;
+}
+
+.admin-card-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.admin-card {
+  padding: 22px;
+}
+
+.admin-card span,
+.admin-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.admin-card strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px;
+  font-weight: 500;
+  margin: 14px 0 8px;
+}
+
+.admin-card p {
+  margin-bottom: 0;
+}
+
+.admin-workspace {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  margin-top: 16px;
+}
+
+.admin-panel {
+  padding: 24px;
+}
+
+.panel-title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.panel-title h2 {
+  font-family: "Aptos", "Segoe UI", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.panel-title span {
+  background: rgba(113, 130, 111, 0.14);
+  border-radius: 999px;
+  color: var(--sage);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+}
+
+.lead-table,
+.activity-list {
+  display: grid;
+  gap: 10px;
+}
+
+.lead-row {
+  align-items: center;
+  background: rgba(217, 208, 191, 0.42);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 120px;
+  min-height: 52px;
+  padding: 0 14px;
+}
+
+.lead-head {
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 34px;
+  text-transform: uppercase;
+}
+
+.activity-item {
+  align-items: start;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto 1fr;
+}
+
+.activity-item span {
+  background: var(--accent);
+  border-radius: 999px;
+  height: 9px;
+  margin-top: 7px;
+  width: 9px;
+}
+
+.activity-item p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
