@@ -7,6 +7,9 @@
   Phone,
   Send
 } from "lucide-react";
+import { PageHero } from "@/components/public/page-hero";
+import { QuotationList } from "@/components/public/quotation-list";
+import { InnerPageFlow } from "@/components/public/section-heading";
 import { SiteHeader } from "@/components/site-header";
 import { contactDetails, quotationItems } from "@/lib/site-data";
 
@@ -20,18 +23,14 @@ export default function ContactPage() {
   return (
     <main>
       <SiteHeader />
-      <section className="page-hero page-hero-contact">
-        <div className="page-hero-content">
-          <p className="eyebrow">Contact</p>
-          <h1>Prepare your enquiry, then choose the easiest way to send it.</h1>
-          <p>
-            Find the quotation details to include, call or email directly, check
-            the Box Hill office location, or send a project message through the form.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Prepare your enquiry, then choose the easiest way to send it."
+        description="Find the quotation details to include, call or email directly, check the Box Hill office location, or send a project message through the form."
+        variant="contact"
+      />
 
-      <div className="inner-page-flow">
+      <InnerPageFlow>
         <section className="contact-hub-section" id="quotation">
           <div className="contact-hub-intro">
             <div>
@@ -54,14 +53,11 @@ export default function ContactPage() {
                   <h3>Quotation checklist</h3>
                 </div>
               </div>
-              <ol className="quotation-step-list">
-                {quotationItems.map((item, index) => (
-                  <li key={item}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{item}</strong>
-                  </li>
-                ))}
-              </ol>
+              <QuotationList
+                ariaLabel="Quotation checklist"
+                items={quotationItems}
+                variant="contact"
+              />
             </div>
 
             <div className="contact-method-panel">
@@ -166,16 +162,14 @@ export default function ContactPage() {
               />
             </label>
             <div className="contact-form-footer">
-              <p>
-                Include attachments in the email draft after it opens.
-              </p>
+              <p>Include attachments in the email draft after it opens.</p>
               <button className="primary-action" type="submit">
                 Create email draft <Send size={17} aria-hidden="true" />
               </button>
             </div>
           </form>
         </section>
-      </div>
+      </InnerPageFlow>
     </main>
   );
 }

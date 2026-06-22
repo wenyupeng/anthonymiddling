@@ -16,6 +16,10 @@ export type Service = {
   title: string;
   description: string;
   icon: LucideIcon;
+  visual: {
+    alt: string;
+    image: string;
+  };
 };
 
 export const services: Service[] = [
@@ -23,37 +27,61 @@ export const services: Service[] = [
     title: "Building permits",
     description:
       "Building permits issued for all classes of buildings, with plans and documents assessed against the National Construction Code.",
-    icon: FileCheck2
+    icon: FileCheck2,
+    visual: {
+      alt: "Architectural drawings and permit documents prepared for assessment",
+      image: "/images/service-permits-v2.png"
+    }
   },
   {
     title: "Building inspections",
     description:
       "Mandatory building inspections carried out with practical trade knowledge and detailed stage-by-stage checklists.",
-    icon: ClipboardCheck
+    icon: ClipboardCheck,
+    visual: {
+      alt: "Building inspection checklist with drawings and construction tools",
+      image: "/images/service-inspections-v2.png"
+    }
   },
   {
     title: "Occupancy permits",
     description:
       "Certification support for occupancy requirements so commercial and residential projects can move forward with confidence.",
-    icon: Building2
+    icon: Building2,
+    visual: {
+      alt: "Occupancy permit review workspace with plans and measuring tools",
+      image: "/images/service-occupancy-v2.png"
+    }
   },
   {
     title: "Swimming pool compliance",
     description:
       "Swimming pool compliance inspections and reports, including pool fencing requirements and practical rectification guidance.",
-    icon: Waves
+    icon: Waves,
+    visual: {
+      alt: "Swimming pool barrier compliance workspace with plans and safety checklist",
+      image: "/images/service-pool-compliance-v2.png"
+    }
   },
   {
     title: "Pre-design advice",
     description:
       "Early consultation for architects, builders, designers, developers, councils and owner builders before documentation is locked in.",
-    icon: MessagesSquare
+    icon: MessagesSquare,
+    visual: {
+      alt: "Pre-design advice workspace with concept plans and building code review materials",
+      image: "/images/service-pre-design-v2.png"
+    }
   },
   {
     title: "Council consultation",
     description:
       "Liaison with council officers plus advice on the Building Act, Building Regulations, NCC and performance-based solutions.",
-    icon: BriefcaseBusiness
+    icon: BriefcaseBusiness,
+    visual: {
+      alt: "Council consultation workspace with planning documents and approval pathway notes",
+      image: "/images/service-council-consultation-v2.png"
+    }
   }
 ];
 
