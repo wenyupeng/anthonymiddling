@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useCallback, useEffect, useRef } from "react";
 
 type AutoCarouselProps = {
   children: ReactNode;
@@ -19,30 +19,32 @@ export function AutoCarousel({
   const hoverPausedRef = useRef(false);
   const manualPausedRef = useRef(false);
 
-  const syncActiveIndex = () => {
+  const getCurrentIndex = useCallback(() => {
     const track = trackRef.current;
 
     if (!track) {
-      return;
+      return 0;
     }
 
     const cards = Array.from(track.children) as HTMLElement[];
 
     if (cards.length === 0) {
-      return;
+      return 0;
     }
 
-    const nearestIndex = cards.reduce((nearest, card, index) => {
+    return cards.reduce((nearest, card, index) => {
       const nearestDistance = Math.abs(cards[nearest].offsetLeft - track.scrollLeft);
       const cardDistance = Math.abs(card.offsetLeft - track.scrollLeft);
 
       return cardDistance < nearestDistance ? index : nearest;
     }, 0);
+  }, []);
 
-    activeIndexRef.current = nearestIndex;
-  };
+  const syncActiveIndex = useCallback(() => {
+    activeIndexRef.current = getCurrentIndex();
+  }, [getCurrentIndex]);
 
-  const scrollToIndex = (index: number) => {
+  const scrollToIndex = useCallback((index: number) => {
     const track = trackRef.current;
 
     if (!track) {
@@ -62,13 +64,39 @@ export function AutoCarousel({
       behavior: "smooth",
       left: cards[targetIndex].offsetLeft
     });
-  };
+  }, []);
 
-  const handleDirection = (direction: "previous" | "next") => {
+  const isAtEnd = useCallback(() => {
+    const track = trackRef.current;
+
+    if (!track) {
+      return false;
+    }
+
+    return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }, []);
+
+  const handleDirection = useCallback((direction: "previous" | "next") => {
     manualPausedRef.current = true;
-    syncActiveIndex();
-    scrollToIndex(activeIndexRef.current + (direction === "next" ? 1 : -1));
-  };
+
+    const cards = trackRef.current ? (Array.from(trackRef.current.children) as HTMLElement[]) : [];
+
+    if (cards.length <= 1) {
+      return;
+    }
+
+    const currentIndex = getCurrentIndex();
+    const lastIndex = cards.length - 1;
+
+    if (direction === "next") {
+      const nextIndex = currentIndex >= lastIndex || isAtEnd() ? 0 : currentIndex + 1;
+      scrollToIndex(nextIndex);
+      return;
+    }
+
+    const previousIndex = currentIndex <= 0 ? lastIndex : currentIndex - 1;
+    scrollToIndex(previousIndex);
+  }, [getCurrentIndex, isAtEnd, scrollToIndex]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -105,12 +133,13 @@ export function AutoCarousel({
 
     const interval = window.setInterval(advance, intervalMs);
     track.addEventListener("scrollend", syncActiveIndex);
+    syncActiveIndex();
 
     return () => {
       window.clearInterval(interval);
       track.removeEventListener("scrollend", syncActiveIndex);
     };
-  }, [intervalMs]);
+  }, [intervalMs, scrollToIndex, syncActiveIndex]);
 
   return (
     <div
