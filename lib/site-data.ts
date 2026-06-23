@@ -136,6 +136,8 @@ export const quotationItems = [
 ];
 
 export const contactDetails = {
+  companyName: "Anthony Middling Building Surveyors Pty Ltd",
+  acn: "633 981 325",
   address: "SPACES - Office 1107, 1 Main Street, Box Hill 3128 VIC",
   phone: "0419 032 430",
   email: "asmidd@bigpond.net.au",

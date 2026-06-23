@@ -1,4 +1,4 @@
-﻿import { BadgeCheck, CheckCircle2 } from "lucide-react";
+import { Award, BadgeCheck, Building2, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -9,16 +9,18 @@ type Achievement = {
 type ProofSectionProps = {
   eyebrow: string;
   title: string;
+  summary?: string;
   achievements: Achievement[];
   compact?: boolean;
 };
 
-export function ProofSection({ eyebrow, title, achievements, compact = false }: ProofSectionProps) {
+export function ProofSection({ eyebrow, title, summary, achievements, compact = false }: ProofSectionProps) {
   return (
     <section className={compact ? "proof-section proof-section--compact" : "proof-section"}>
       <div>
         <p className="eyebrow">{eyebrow}</p>
         <h2>{title}</h2>
+        {summary && <p className="proof-summary">{summary}</p>}
       </div>
       <div className={compact ? "compact-proof-grid" : "proof-list"}>
         {achievements.map((item) => (
@@ -33,22 +35,39 @@ export function ProofSection({ eyebrow, title, achievements, compact = false }: 
 }
 
 type CredentialSectionProps = {
+  companyName: string;
+  acn: string;
   registration: string;
   qualification: string;
 };
 
-export function CredentialSection({ registration, qualification }: CredentialSectionProps) {
+export function CredentialSection({ companyName, acn, registration, qualification }: CredentialSectionProps) {
   return (
     <section className="credential-section credential-section--stacked">
-      <div className="credential-card">
-        <CheckCircle2 size={22} aria-hidden="true" />
-        <span>Registration</span>
-        <strong>{registration}</strong>
+      <div className="credential-card credential-card--identity">
+        <Building2 size={22} aria-hidden="true" />
+        <span>Company identity</span>
+        <strong>{companyName}</strong>
+        <dl className="credential-detail-list">
+          <div>
+            <dt>ACN</dt>
+            <dd>{acn}</dd>
+          </div>
+        </dl>
       </div>
-      <div className="credential-card">
-        <CheckCircle2 size={22} aria-hidden="true" />
-        <span>Qualification</span>
-        <strong>{qualification}</strong>
+      <div className="credential-card credential-card--registration">
+        <Award size={22} aria-hidden="true" />
+        <span>Professional registration</span>
+        <strong className="credential-registration-value">{registration}</strong>
+        <dl className="credential-detail-list">
+          <div>
+            <dt>Qualification</dt>
+            <dd>
+              <GraduationCap size={16} aria-hidden="true" />
+              {qualification}
+            </dd>
+          </div>
+        </dl>
       </div>
       <div className="page-cta-panel">
         <p className="eyebrow">Next step</p>

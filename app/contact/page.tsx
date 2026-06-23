@@ -1,4 +1,4 @@
-﻿import {
+import {
   ClipboardList,
   Mail,
   MapPin,
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 <MessageSquareText size={22} aria-hidden="true" />
                 <div>
                   <span>Contact options</span>
-                  <h3>Talk to the right channel</h3>
+                  <h3>Contact by phone or email</h3>
                 </div>
               </div>
               <div className="contact-method-list">

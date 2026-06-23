@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 type AutoCarouselProps = {
   children: ReactNode;
@@ -16,7 +16,8 @@ export function AutoCarousel({
 }: AutoCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const activeIndexRef = useRef(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const hoverPausedRef = useRef(false);
+  const manualPausedRef = useRef(false);
 
   const syncActiveIndex = () => {
     const track = trackRef.current;
@@ -54,8 +55,7 @@ export function AutoCarousel({
       return;
     }
 
-    const lastIndex = cards.length - 1;
-    const targetIndex = index < 0 ? lastIndex : index > lastIndex ? 0 : index;
+    const targetIndex = ((index % cards.length) + cards.length) % cards.length;
 
     activeIndexRef.current = targetIndex;
     track.scrollTo({
@@ -65,10 +65,9 @@ export function AutoCarousel({
   };
 
   const handleDirection = (direction: "previous" | "next") => {
-    setIsPaused(true);
+    manualPausedRef.current = true;
     syncActiveIndex();
     scrollToIndex(activeIndexRef.current + (direction === "next" ? 1 : -1));
-    window.setTimeout(() => setIsPaused(false), 4000);
   };
 
   useEffect(() => {
@@ -85,7 +84,7 @@ export function AutoCarousel({
     }
 
     const advance = () => {
-      if (isPaused) {
+      if (hoverPausedRef.current || manualPausedRef.current) {
         return;
       }
 
@@ -111,17 +110,23 @@ export function AutoCarousel({
       window.clearInterval(interval);
       track.removeEventListener("scrollend", syncActiveIndex);
     };
-  }, [intervalMs, isPaused]);
+  }, [intervalMs]);
 
   return (
     <div
       className="carousel-shell"
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onPointerDown={() => setIsPaused(true)}
-      onPointerUp={() => setIsPaused(false)}
+      onFocus={() => {
+        hoverPausedRef.current = true;
+      }}
+      onBlur={() => {
+        hoverPausedRef.current = false;
+      }}
+      onMouseEnter={() => {
+        hoverPausedRef.current = true;
+      }}
+      onMouseLeave={() => {
+        hoverPausedRef.current = false;
+      }}
     >
       <button
         aria-label="Previous service"

@@ -4,7 +4,7 @@
 };
 
 type QuotationListProps = {
-  items: string[] | QuotationItem[];
+  items: readonly (string | QuotationItem)[];
   variant: "home" | "services" | "contact";
   ariaLabel: string;
 };
@@ -60,26 +60,3 @@ export function QuotationList({ items, variant, ariaLabel }: QuotationListProps)
     </ol>
   );
 }
-
-export const homeQuotationItems: QuotationItem[] = [
-  {
-    title: "Owner's name, mobile number, and email address",
-    description: "Use the main contact for the project."
-  },
-  {
-    title: "Property address",
-    description: "Include the site location and any lot details."
-  },
-  {
-    title: "Description of the project",
-    description: "Summarise the proposed works in a few lines."
-  },
-  {
-    title: "Engineering design and architectural plans",
-    description: "Attach any drawings, design documents, or revisions."
-  },
-  {
-    title: "Estimated construction cost inclusive of GST",
-    description: "Provide the best current estimate for the works."
-  }
-];

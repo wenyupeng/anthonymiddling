@@ -707,3 +707,98 @@
     aspect-ratio: 1.28;
   }
 }
+
+@media (max-width: 700px) {
+  .about-approach-section,
+  .proof-section--compact,
+  .credential-section--stacked {
+    min-width: 0;
+    overflow: hidden;
+    padding-inline: 20px;
+  }
+
+  .about-approach-copy,
+  .about-support-panel,
+  .proof-section--compact > *,
+  .compact-proof-grid,
+  .credential-card,
+  .page-cta-panel {
+    min-width: 0;
+  }
+
+  .about-approach-copy h2,
+  .proof-section--compact h2 {
+    max-width: 100%;
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.08;
+  }
+
+  .approach-highlight-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px 12px;
+    padding: 14px;
+  }
+
+  .approach-highlight-card svg {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .approach-highlight-card > div {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 0;
+  }
+
+  .approach-highlight-card strong,
+  .approach-highlight-card span:not(.approach-step-index),
+  .compact-proof-grid .proof-item span,
+  .credential-card strong,
+  .credential-detail-list dd,
+  .page-cta-panel h2 {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .credential-registration-value {
+    white-space: normal;
+  }
+
+  .credential-card,
+  .page-cta-panel {
+    padding: 20px;
+  }
+
+  .credential-detail-list dd {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 482px) {
+  .about-approach-section,
+  .proof-section--compact,
+  .credential-section--stacked {
+    padding-inline: 16px;
+  }
+
+  .approach-highlight-card {
+    grid-template-columns: 1fr;
+  }
+
+  .approach-highlight-card svg {
+    display: none;
+  }
+
+  .approach-highlight-card > div {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .proof-summary,
+  .compact-proof-grid .proof-item span,
+  .credential-detail-list dd {
+    font-size: 14px;
+  }
+}
+
