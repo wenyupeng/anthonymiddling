@@ -4,7 +4,7 @@ type PageHeroProps = {
   eyebrow: string;
   title: string;
   description: string;
-  variant: "services" | "about" | "permassist" | "contact";
+  variant: "services" | "about" | "permassist" | "contact" | "resources";
   children?: ReactNode;
 };
 

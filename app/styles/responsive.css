@@ -802,3 +802,65 @@
   }
 }
 
+
+@media (max-width: 1080px) {
+  .resources-intro,
+  .resources-next-step {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-file-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-next-step .primary-action {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .resources-section,
+  .resources-next-step {
+    padding: 28px 20px;
+  }
+
+  .resource-file-card {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-file-link {
+    grid-column: 1;
+  }
+
+  .resources-next-step .primary-action {
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 482px) {
+  .resources-section,
+  .resources-next-step {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 820px) {
+  .resources-section--library,
+  .resources-next-step--compact {
+    max-width: none;
+  }
+
+  .resources-intro--stacked,
+  .resource-file-row {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-file-row {
+    align-items: start;
+    gap: 12px;
+  }
+
+  .resource-download-button {
+    justify-self: stretch;
+  }
+}
