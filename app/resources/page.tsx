@@ -41,12 +41,12 @@ const resourceFiles = [
     description: "Supporting statement for protection work requirements.",
     href: "/files/protection-work-statement.pdf"
   },
-  {
-    title: "Advisory Notes for Protection of Adjoining Property",
-    label: "Advisory notes",
-    description: "Guidance notes for protecting adjoining property.",
-    href: "/files/form-advisory-notes-for-protection-of-adjoining-property.pdf"
-  }
+  // {
+  //   title: "Advisory Notes for Protection of Adjoining Property",
+  //   label: "Advisory notes",
+  //   description: "Guidance notes for protecting adjoining property.",
+  //   href: "/files/form-advisory-notes-for-protection-of-adjoining-property.pdf"
+  // }
 ];
 
 export default function ResourcesPage() {
