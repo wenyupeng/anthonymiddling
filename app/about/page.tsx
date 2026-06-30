@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { ClipboardCheck, FileSearch, Handshake, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/public/page-hero";
@@ -5,6 +6,21 @@ import { CredentialSection, ProofSection } from "@/components/public/proof-secti
 import { InnerPageFlow } from "@/components/public/section-heading";
 import { SiteHeader } from "@/components/site-header";
 import { achievements, audienceGroups, contactDetails } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: "About Anthony Middling Building Surveyors",
+  description:
+    "Learn about Anthony Middling Building Surveyors, an independent Victorian building surveying service for permits, inspections and NCC compliance advice.",
+  alternates: {
+    canonical: "/about"
+  },
+  openGraph: {
+    title: "About Anthony Middling Building Surveyors",
+    description:
+      "Independent building surveying support backed by technical assessment and practical construction knowledge.",
+    url: "/about"
+  }
+};
 
 const approachItems = [
   {

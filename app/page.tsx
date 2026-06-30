@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BadgeCheck,
@@ -25,14 +26,24 @@ import {
 } from "@/lib/home-content";
 import { achievements } from "@/lib/site-data";
 import { homeCoreServices } from "@/lib/service-visuals";
+import { defaultSeoDescription } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Building Surveyors for Permits, Inspections and Compliance in Victoria",
+  description: defaultSeoDescription,
+  alternates: {
+    canonical: "/"
+  }
+};
+
 const pathCardIcons = {
   "/services": FileCheck2,
   "/about": BadgeCheck,
   "/contact": Phone
 } as const;
 
-
 export default function HomePage() {
+  console.log("Website is created by Chris Wen: chriswen430@gmail.com");
   return (
     <main>
       <SiteHeader />
@@ -163,3 +174,4 @@ export default function HomePage() {
     </main>
   );
 }
+

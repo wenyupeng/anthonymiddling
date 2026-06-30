@@ -1,4 +1,5 @@
-﻿import { ArrowRight, CheckCircle2 } from "lucide-react";
+import type { Metadata } from "next";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { PageHero } from "@/components/public/page-hero";
 import { QuotationList } from "@/components/public/quotation-list";
@@ -11,12 +12,49 @@ import { SiteHeader } from "@/components/site-header";
 import { adviceAreas, quotationItems, services } from "@/lib/site-data";
 import { serviceVisuals } from "@/lib/service-visuals";
 
+export const metadata: Metadata = {
+  title: "Building Permit, Inspection and Compliance Services",
+  description:
+    "Explore building permits, mandatory inspections, occupancy permits, swimming pool compliance and NCC advice for projects across Victoria.",
+  alternates: {
+    canonical: "/services"
+  },
+  openGraph: {
+    title: "Building Permit, Inspection and Compliance Services",
+    description:
+      "Building surveying services for approval, inspection, occupancy and compliance pathways across Victoria.",
+    url: "/services"
+  }
+};
+
 export default function ServicesPage() {
   const primaryServices = services.slice(0, 3);
   const secondaryServices = services.slice(3);
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: services.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description,
+        areaServed: "Victoria, Australia",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Anthony Middling Building Surveyors Pty Ltd"
+        }
+      }
+    }))
+  };
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <SiteHeader />
       <PageHero
         eyebrow="Services"

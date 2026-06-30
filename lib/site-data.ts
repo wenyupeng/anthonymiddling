@@ -157,14 +157,15 @@ export const audienceGroups = [
 
 export const adminCards = [
   { label: "Open inquiries", value: "24", detail: "6 need review today" },
-  { label: "Scheduled items", value: "13", detail: "Across content and events" },
-  { label: "Audience growth", value: "+18%", detail: "Compared with last month" },
-  { label: "Tasks due", value: "7", detail: "2 are high priority" }
+  { label: "Scheduled items", value: "13", detail: "Permit tasks and inspections" },
+  { label: "Documentation checks", value: "+18%", detail: "Compared with last month" },
+  { label: "Tasks due", value: "7", detail: "2 require priority review" }
 ];
 
 export const recentActivity = [
-  "New partnership inquiry assigned to review.",
-  "Homepage service copy moved to draft approval.",
-  "Monthly performance report generated.",
-  "Admin settings checklist updated."
+  "New building permit inquiry assigned for review.",
+  "Service page content reviewed for public release.",
+  "Monthly inquiry summary generated.",
+  "Administration checklist updated."
 ];
+

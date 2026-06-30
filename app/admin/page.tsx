@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { Activity, Inbox, LayoutDashboard, Settings, UsersRound } from "lucide-react";
 import Link from "next/link";
 import { adminCards, recentActivity } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: {
+    index: false,
+    follow: false
+  }
+};
 
 export default function AdminPage() {
   return (
@@ -33,7 +42,7 @@ export default function AdminPage() {
         <header className="admin-topbar">
           <div>
             <p className="eyebrow">Management system</p>
-            <h1>Command center</h1>
+            <h1>Operations dashboard</h1>
           </div>
           <Link className="secondary-action compact" href="/">
             View website
@@ -53,28 +62,28 @@ export default function AdminPage() {
         <div className="admin-workspace">
           <section className="admin-panel" id="inquiries">
             <div className="panel-title">
-              <h2>Lead queue</h2>
+              <h2>Inquiry queue</h2>
               <span>Live</span>
             </div>
-            <div className="lead-table" role="table" aria-label="Lead queue">
+            <div className="lead-table" role="table" aria-label="Inquiry queue">
               <div role="row" className="lead-row lead-head">
                 <span role="columnheader">Contact</span>
                 <span role="columnheader">Need</span>
                 <span role="columnheader">Status</span>
               </div>
               <div role="row" className="lead-row">
-                <span role="cell">M. Carter</span>
-                <span role="cell">Partnership</span>
+                <span role="cell">Residential owner</span>
+                <span role="cell">Building permit</span>
                 <span role="cell">Qualified</span>
               </div>
               <div role="row" className="lead-row">
-                <span role="cell">Northline Studio</span>
-                <span role="cell">Consulting</span>
+                <span role="cell">Design consultant</span>
+                <span role="cell">NCC advice</span>
                 <span role="cell">New</span>
               </div>
               <div role="row" className="lead-row">
-                <span role="cell">A. Nguyen</span>
-                <span role="cell">Speaking</span>
+                <span role="cell">Builder</span>
+                <span role="cell">Inspection booking</span>
                 <span role="cell">Scheduled</span>
               </div>
             </div>
@@ -99,3 +108,4 @@ export default function AdminPage() {
     </main>
   );
 }
+

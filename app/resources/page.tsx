@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, ClipboardList, Download, FileText } from "lucide-react";
 import Link from "next/link";
 import { PageHero } from "@/components/public/page-hero";
@@ -40,18 +41,47 @@ const resourceFiles = [
     label: "Statement",
     description: "Supporting statement for protection work requirements.",
     href: "/files/protection-work-statement.pdf"
-  },
-  // {
-  //   title: "Advisory Notes for Protection of Adjoining Property",
-  //   label: "Advisory notes",
-  //   description: "Guidance notes for protecting adjoining property.",
-  //   href: "/files/form-advisory-notes-for-protection-of-adjoining-property.pdf"
-  // }
+  }
 ];
 
+export const metadata: Metadata = {
+  title: "Building Permit Forms and Protection Works Resources",
+  description:
+    "Download building permit application forms, protection works notices, occupancy permit forms and supporting resources for Victorian projects.",
+  alternates: {
+    canonical: "/resources"
+  },
+  openGraph: {
+    title: "Building Permit Forms and Protection Works Resources",
+    description:
+      "Download commonly requested permit, occupancy and protection works forms.",
+    url: "/resources"
+  }
+};
+
 export default function ResourcesPage() {
+  const resourcesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: resourceFiles.map((file, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "DigitalDocument",
+        name: file.title,
+        description: file.description,
+        encodingFormat: "application/pdf",
+        url: file.href
+      }
+    }))
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(resourcesJsonLd) }}
+      />
       <SiteHeader />
       <PageHero
         eyebrow="Resources"

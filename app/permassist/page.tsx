@@ -1,9 +1,25 @@
-﻿import { ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { PageHero } from "@/components/public/page-hero";
 import { PortalSection } from "@/components/public/portal-section";
 import { InnerPageFlow } from "@/components/public/section-heading";
 import { SiteHeader } from "@/components/site-header";
+
+export const metadata: Metadata = {
+  title: "PermAssist Online Building Permit Portal",
+  description:
+    "Use PermAssist to upload documents, track building permit application progress and keep approval communication organised.",
+  alternates: {
+    canonical: "/permassist"
+  },
+  openGraph: {
+    title: "PermAssist Online Building Permit Portal",
+    description:
+      "Online permit administration for document upload, application progress and approval tasks.",
+    url: "/permassist"
+  }
+};
 
 export default function PermAssistPage() {
   return (

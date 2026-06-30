@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   ClipboardList,
   Mail,
@@ -12,6 +13,21 @@ import { QuotationList } from "@/components/public/quotation-list";
 import { InnerPageFlow } from "@/components/public/section-heading";
 import { SiteHeader } from "@/components/site-header";
 import { contactDetails, quotationItems } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: "Contact a Building Surveyor in Box Hill, Victoria",
+  description:
+    "Contact Anthony Middling Building Surveyors in Box Hill for building permit, inspection, occupancy permit and pool compliance quotation enquiries.",
+  alternates: {
+    canonical: "/contact"
+  },
+  openGraph: {
+    title: "Contact a Building Surveyor in Box Hill, Victoria",
+    description:
+      "Call, email or prepare a quotation enquiry for building surveying support across Victoria.",
+    url: "/contact"
+  }
+};
 
 export default function ContactPage() {
   const phoneHref = `tel:${contactDetails.phone.replaceAll(" ", "")}`;
@@ -117,7 +133,7 @@ export default function ContactPage() {
             <p className="eyebrow">Email communication</p>
             <h2 id="contact-form-title">Send a concise project message.</h2>
             <p>
-              The form opens an email draft using your mail app. Attach plans,
+              The form prepares an email message in your mail app. Attach plans,
               engineering documents and supporting files before sending.
             </p>
           </div>
@@ -162,9 +178,9 @@ export default function ContactPage() {
               />
             </label>
             <div className="contact-form-footer">
-              <p>Include attachments in the email draft after it opens.</p>
+              {/* <p>Include attachments in the prepared email before sending.</p> */}
               <button className="primary-action" type="submit">
-                Create email draft <Send size={17} aria-hidden="true" />
+                Prepare email message <Send size={17} aria-hidden="true" />
               </button>
             </div>
           </form>
@@ -173,3 +189,4 @@ export default function ContactPage() {
     </main>
   );
 }
+
